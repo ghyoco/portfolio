@@ -6,34 +6,81 @@ endobj
 << /Type /Pages /Kids [3 0 R] /Count 1 >>
 endobj
 3 0 obj
-<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 4 0 R /Resources << /Font << /F1 5 0 R >> >> >>
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 5 0 R /F2 6 0 R >> >> /Contents 4 0 R >>
 endobj
 4 0 obj
-<< /Length 120 >>
+<< /Length 5061 >>
 stream
-BT
-/F1 24 Tf
-72 720 Td
-(Your CV Here) Tj
-/F1 12 Tf
-0 -30 Td
-(Replace public/cv.pdf with your actual CV as a PDF.) Tj
-ET
+0.035 0.035 0.043 rg BT /F2 22 Tf 56 786.00 Td (Alex Rivera) Tj ET
+0.443 0.443 0.478 rg BT /F1 10 Tf 56 756.30 Td (Computer Science student - Delft University of Technology) Tj ET
+0.443 0.443 0.478 rg BT /F1 8.5 Tf 56 741.80 Td (alex@alexrivera.dev | github.com/alexrivera | linkedin.com/in/alexrivera |) Tj ET
+0.443 0.443 0.478 rg BT /F1 8.5 Tf 56 729.05 Td (instagram.com/alexrivera.dev | Delft, Netherlands) Tj ET
+0.9 w 0.918 0.345 0.047 RG 56 713.30 m 102.00 713.30 l S
+0.6 w 0.894 0.894 0.906 RG 102.00 713.30 m 539 713.30 l S
+0.035 0.035 0.043 rg BT /F2 10.5 Tf 56 696.30 Td (Summary) Tj ET
+0.035 0.035 0.043 rg BT /F1 9.5 Tf 56 679.50 Td (Third-year Computer Science student who builds backend services, data pipelines and the) Tj ET
+0.035 0.035 0.043 rg BT /F1 9.5 Tf 56 666.20 Td (tooling around them. Looking for a summer 2027 software engineering internship on a) Tj ET
+0.035 0.035 0.043 rg BT /F1 9.5 Tf 56 652.90 Td (backend or infrastructure team.) Tj ET
+0.9 w 0.918 0.345 0.047 RG 56 636.60 m 102.00 636.60 l S
+0.6 w 0.894 0.894 0.906 RG 102.00 636.60 m 539 636.60 l S
+0.035 0.035 0.043 rg BT /F2 10.5 Tf 56 619.60 Td (Education) Tj ET
+0.035 0.035 0.043 rg BT /F2 9.5 Tf 56 602.80 Td (B.Sc. Computer Science) Tj ET
+0.443 0.443 0.478 rg BT /F1 8.5 Tf 56 589.98 Td (Delft University of Technology  |  2023 - expected 2027) Tj ET
+0.035 0.035 0.043 rg BT /F1 9.5 Tf 56 577.23 Td (- Coursework: Algorithms & Data Structures, Computer Networks, Databases, Operating) Tj ET
+0.035 0.035 0.043 rg BT /F1 9.5 Tf 56 563.93 Td (  Systems, Distributed Systems, Compiler Construction, Machine Learning.) Tj ET
+0.9 w 0.918 0.345 0.047 RG 56 543.63 m 102.00 543.63 l S
+0.6 w 0.894 0.894 0.906 RG 102.00 543.63 m 539 543.63 l S
+0.035 0.035 0.043 rg BT /F2 10.5 Tf 56 526.63 Td (Experience) Tj ET
+0.035 0.035 0.043 rg BT /F2 9.5 Tf 56 509.83 Td (Software Engineering Intern) Tj ET
+0.443 0.443 0.478 rg BT /F1 8.5 Tf 56 497.00 Td (Fathom Labs \(student startup, 12 people\)  |  Jul - Sep 2025) Tj ET
+0.035 0.035 0.043 rg BT /F1 9.5 Tf 56 484.25 Td (- Moved the reporting service off a nightly cron job onto an incremental pipeline, cutting) Tj ET
+0.035 0.035 0.043 rg BT /F1 9.5 Tf 56 470.95 Td (  the morning job from 22 minutes to under 4.) Tj ET
+0.035 0.035 0.043 rg BT /F1 9.5 Tf 56 457.65 Td (- Added integration tests around the ingestion path that had broken twice that summer.) Tj ET
+0.035 0.035 0.043 rg BT /F2 9.5 Tf 56 440.35 Td (Teaching Assistant, Algorithms & Data Structures) Tj ET
+0.443 0.443 0.478 rg BT /F1 8.5 Tf 56 427.53 Td (Delft University of Technology  |  Feb 2025 - present) Tj ET
+0.035 0.035 0.043 rg BT /F1 9.5 Tf 56 414.78 Td (- Run weekly labs for 40 students and grade 200+ assignments a semester.) Tj ET
+0.035 0.035 0.043 rg BT /F1 9.5 Tf 56 401.48 Td (- Rewrote the graph-algorithms lab after three cohorts in a row hit the same edge case in) Tj ET
+0.035 0.035 0.043 rg BT /F1 9.5 Tf 56 388.18 Td (  Dijkstra's algorithm.) Tj ET
+0.9 w 0.918 0.345 0.047 RG 56 367.88 m 102.00 367.88 l S
+0.6 w 0.894 0.894 0.906 RG 102.00 367.88 m 539 367.88 l S
+0.035 0.035 0.043 rg BT /F2 10.5 Tf 56 350.88 Td (Selected projects) Tj ET
+0.035 0.035 0.043 rg BT /F2 9.5 Tf 56 334.08 Td (CourseGraph - TypeScript, Next.js, PostgreSQL, D3) Tj ET
+0.443 0.443 0.478 rg BT /F1 8.5 Tf 56 321.25 Td (github.com/alexrivera/coursegraph) Tj ET
+0.035 0.035 0.043 rg BT /F1 9.5 Tf 56 308.50 Td (- Prerequisite map for 1,200+ catalogue courses; a topological sort over the parsed data) Tj ET
+0.035 0.035 0.043 rg BT /F1 9.5 Tf 56 295.20 Td (  surfaced 14 circular prerequisite chains nobody had noticed.) Tj ET
+0.035 0.035 0.043 rg BT /F2 9.5 Tf 56 277.90 Td (Seatwatch - Python, SQLite, Docker, GitHub Actions) Tj ET
+0.443 0.443 0.478 rg BT /F1 8.5 Tf 56 265.08 Td (github.com/alexrivera/seatwatch) Tj ET
+0.035 0.035 0.043 rg BT /F1 9.5 Tf 56 252.33 Td (- Course-registration notifier used by around 400 students; a token-bucket queue with) Tj ET
+0.035 0.035 0.043 rg BT /F1 9.5 Tf 56 239.03 Td (  jittered backoff keeps it inside the registration API's rate limit.) Tj ET
+0.035 0.035 0.043 rg BT /F2 9.5 Tf 56 221.73 Td (raft-kv - Go, gRPC, Protocol Buffers) Tj ET
+0.443 0.443 0.478 rg BT /F1 8.5 Tf 56 208.90 Td (github.com/alexrivera/raft-kv) Tj ET
+0.035 0.035 0.043 rg BT /F1 9.5 Tf 56 196.15 Td (- Fault-tolerant key-value store implementing leader election, log replication and) Tj ET
+0.035 0.035 0.043 rg BT /F1 9.5 Tf 56 182.85 Td (  snapshotting, tested against a simulator that drops, delays and partitions messages.) Tj ET
+0.9 w 0.918 0.345 0.047 RG 56 162.55 m 102.00 162.55 l S
+0.6 w 0.894 0.894 0.906 RG 102.00 162.55 m 539 162.55 l S
+0.035 0.035 0.043 rg BT /F2 10.5 Tf 56 145.55 Td (Skills) Tj ET
+0.035 0.035 0.043 rg BT /F1 9.5 Tf 56 128.75 Td (Languages: TypeScript, Python, Go, SQL, Rust, C) Tj ET
+0.035 0.035 0.043 rg BT /F1 9.5 Tf 56 115.45 Td (Frameworks: Next.js, React, Node.js, FastAPI, gRPC, D3) Tj ET
+0.035 0.035 0.043 rg BT /F1 9.5 Tf 56 102.15 Td (Data & infrastructure: PostgreSQL, Redis, SQLite, Docker, GitHub Actions, Linux) Tj ET
 endstream
 endobj
 5 0 obj
-<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>
+endobj
+6 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding >>
 endobj
 xref
-0 6
+0 7
 0000000000 65535 f 
 0000000009 00000 n 
 0000000058 00000 n 
 0000000115 00000 n 
-0000000247 00000 n 
-0000000416 00000 n 
+0000000251 00000 n 
+0000005364 00000 n 
+0000005461 00000 n 
 trailer
-<< /Size 6 /Root 1 0 R >>
+<< /Size 7 /Root 1 0 R >>
 startxref
-495
+5563
 %%EOF

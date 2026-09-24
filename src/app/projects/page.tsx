@@ -1,52 +1,47 @@
 import type { Metadata } from "next";
-import { projects } from "@/data/projects";
+import { ArrowLeft } from "lucide-react";
+import Link from "next/link";
+
+import ActionButton from "@/components/ActionButton";
 import ProjectCard from "@/components/ProjectCard";
 import SectionHeading from "@/components/SectionHeading";
-import Reveal from "@/components/Reveal";
+import { projects } from "@/data/projects";
+import { site } from "@/data/site";
 
 export const metadata: Metadata = {
-  title: "Projects — Your Name",
-  description: "All projects: coursework, personal builds, and experiments.",
+  title: "Projects",
+  description: `Selected software projects by ${site.name}: what each one does, the stack it uses and the hard part of building it.`,
+  alternates: { canonical: "/projects" },
 };
 
 export default function ProjectsPage() {
-  const featured = projects.filter((p) => p.featured);
-  const others = projects.filter((p) => !p.featured);
-
   return (
-    <div className="max-w-3xl mx-auto px-6">
-      <section className="py-16">
-        <Reveal>
-          <h1 className="text-3xl font-semibold tracking-tight mb-3">Projects</h1>
-          <p className="text-neutral-400 mb-10 max-w-xl">
-            Everything I&apos;ve built that&apos;s worth showing — featured ones
-            first.
-          </p>
-        </Reveal>
+    <div className="shell py-16 lg:py-20">
+      <Link
+        href="/"
+        className="inline-flex items-center gap-1.5 font-mono text-xs text-muted transition-colors hover:text-accent"
+      >
+        <ArrowLeft size={14} />
+        back home
+      </Link>
 
-        <SectionHeading path="featured" />
-        <div className="grid gap-5 sm:grid-cols-2 mb-12">
-          {featured.map((project, i) => (
-            <Reveal key={project.slug} delay={i * 100}>
-              <ProjectCard project={project} index={i} />
-            </Reveal>
-          ))}
-        </div>
+      <SectionHeading
+        className="mt-8"
+        path="projects"
+        title="All projects"
+        description="Everything I've built that I'd defend in a code review — coursework included, because the interesting bugs were in there too."
+        action={
+          <ActionButton href={site.github} external>
+            More on GitHub
+          </ActionButton>
+        }
+      />
 
-        {others.length > 0 && (
-          <>
-            <SectionHeading path="more" />
-            <div className="grid gap-5 sm:grid-cols-2">
-              {others.map((project, i) => (
-                <Reveal key={project.slug} delay={i * 100}>
-                  <ProjectCard project={project} index={featured.length + i} />
-                </Reveal>
-              ))}
-            </div>
-          </>
-        )}
-      </section>
-      <div className="pb-20" />
+      <div className="mt-10 grid gap-6">
+        {projects.map((project, i) => (
+          <ProjectCard key={project.slug} project={project} index={i} variant="row" />
+        ))}
+      </div>
     </div>
   );
 }

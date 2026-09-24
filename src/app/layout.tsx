@@ -1,9 +1,10 @@
-import type { Metadata, Viewport } from "next";
+import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+
 import "./globals.css";
-import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
-import { profile } from "@/data/profile";
+import Nav from "@/components/Nav";
+import { site } from "@/data/site";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -15,12 +16,33 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const description = `Portfolio of ${site.name} — ${site.role.toLowerCase()}, focused on ${site.focus}. Selected projects, CV and contact details.`;
+
 export const metadata: Metadata = {
-  title: `${profile.name} — ${profile.role}`,
-  description: `Portfolio of ${profile.name}, a Computer Science student. Projects, CV, and contact info.`,
+  metadataBase: new URL(site.url),
+  title: {
+    default: `${site.name} — CS student and developer`,
+    template: `%s — ${site.name}`,
+  },
+  description,
+  alternates: { canonical: "/" },
+  openGraph: {
+    type: "website",
+    url: site.url,
+    siteName: site.name,
+    title: `${site.name} — CS student and developer`,
+    description,
+    locale: "en_GB",
+  },
+  twitter: {
+    card: "summary",
+    title: `${site.name} — CS student and developer`,
+    description,
+  },
+  robots: { index: true, follow: true },
 };
 
-export const viewport: Viewport = {
+export const viewport = {
   themeColor: "#0b0d10",
 };
 
@@ -30,7 +52,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-grid">
+      <body className="bg-grid flex min-h-full flex-col bg-paper text-ink selection:bg-accent/20">
         <Nav />
         <main className="flex-1">{children}</main>
         <Footer />

@@ -1,52 +1,98 @@
-import { GithubIcon } from "./BrandIcons";
-import { profile } from "@/data/profile";
-import CVButton from "./CVButton";
-import TypingLine from "./TypingLine";
-import Reveal from "./Reveal";
+"use client";
+
+import { ArrowDown, FileText } from "lucide-react";
+import Image from "next/image";
+import { useState } from "react";
+
+import ActionButton from "@/components/ActionButton";
+import CVModal from "@/components/CVModal";
+import { site } from "@/data/site";
 
 export default function Hero() {
+  const [cvOpen, setCvOpen] = useState(false);
+
   return (
-    <section className="pt-20 pb-16 sm:pt-28 sm:pb-20">
-      <Reveal>
-        {/* Availability pill */}
-        <div className="inline-flex items-center gap-2 rounded-full border border-line bg-card px-3 py-1 mb-8">
-          <span className="relative flex h-2 w-2">
-            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-60" />
-            <span className="relative inline-flex h-2 w-2 rounded-full bg-accent" />
+    <section className="hero-bg grain relative overflow-hidden bg-soft text-ink">
+      <div className="shell relative z-10 grid gap-14 pb-16 pt-14 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:gap-16 lg:pb-28 lg:pt-24">
+        <div>
+          <span className="animate-reveal inline-flex items-center gap-2 rounded-full border border-line bg-mist px-3 py-1.5 font-mono text-xs text-muted">
+            <span className="relative flex size-1.5">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-60" />
+              <span className="relative inline-flex size-1.5 rounded-full bg-accent" />
+            </span>
+            {site.status}
           </span>
-          <span className="font-mono text-xs text-neutral-300">
-            {profile.availability}
-          </span>
-        </div>
-      </Reveal>
 
-      <Reveal delay={100}>
-        <h1 className="text-4xl sm:text-6xl font-semibold tracking-tight mb-5">
-          {profile.name}
-        </h1>
-      </Reveal>
-
-      <Reveal delay={200}>
-        <p className="text-lg text-neutral-400 max-w-xl mb-3">{profile.identity}</p>
-        <p className="font-mono text-base sm:text-lg mb-10 min-h-7">
-          <TypingLine phrases={profile.typingPhrases} />
-        </p>
-      </Reveal>
-
-      <Reveal delay={300}>
-        <div className="flex flex-wrap gap-3">
-          <CVButton />
-          <a
-            href={profile.github}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-md border border-line bg-card px-4 py-2 text-sm font-medium hover:border-accent transition-colors"
+          <h1
+            className="animate-reveal mt-7 text-4xl leading-[1.05] font-semibold tracking-tight sm:text-5xl lg:text-6xl"
+            style={{ animationDelay: "70ms" }}
           >
-            <GithubIcon size={16} />
-            GitHub
-          </a>
+            Hi, I&apos;m {site.name}.
+          </h1>
+
+          <p
+            className="animate-reveal mt-6 max-w-xl text-lg leading-relaxed text-muted"
+            style={{ animationDelay: "140ms" }}
+          >
+            <span className="text-ink">{site.role}.</span> I write backend services, data
+            pipelines and the tooling that keeps a team&apos;s feedback loop short.
+          </p>
+
+          <div
+            className="animate-reveal mt-9 flex flex-wrap items-center gap-3"
+            style={{ animationDelay: "210ms" }}
+          >
+            <ActionButton href="/#projects" icon={<ArrowDown size={16} />}>
+              See my work
+            </ActionButton>
+            <ActionButton
+              variant="outline"
+              href="#cv"
+              onClick={(e) => {
+                e.preventDefault();
+                setCvOpen(true);
+              }}
+              icon={<FileText size={16} />}
+            >
+              View CV
+            </ActionButton>
+          </div>
+
+          <p
+            className="animate-reveal mt-10 font-mono text-xs text-faint"
+            style={{ animationDelay: "280ms" }}
+          >
+            {site.location} ·{" "}
+            <a href={`mailto:${site.email}`} className="transition-colors hover:text-accent">
+              {site.email}
+            </a>
+          </p>
         </div>
-      </Reveal>
+
+        {/* Portrait: swap site.avatar for a real photo, 4:5 works best. */}
+        <div
+          className="animate-reveal relative mx-auto w-60 sm:w-72 lg:mx-0 lg:w-full lg:max-w-sm lg:justify-self-end"
+          style={{ animationDelay: "350ms" }}
+        >
+          <div
+            aria-hidden="true"
+            className="absolute -inset-8 -z-10 rounded-full bg-accent/15 blur-3xl"
+          />
+          <div className="overflow-hidden rounded-[2rem] border border-line bg-mist transition-colors duration-300">
+            <Image
+              src={site.avatar}
+              alt={site.avatarAlt}
+              width={800}
+              height={1000}
+              priority
+              unoptimized={site.avatar.endsWith(".svg")}
+              className="aspect-[4/5] w-full object-cover"
+            />
+          </div>
+        </div>
+      </div>
+
+      <CVModal open={cvOpen} onClose={() => setCvOpen(false)} />
     </section>
   );
 }

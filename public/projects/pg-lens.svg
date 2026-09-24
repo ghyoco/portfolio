@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675" role="img" aria-label="pg-lens preview: query plan tree with row estimate error highlighted">
+  <rect width="1200" height="675" fill="#f4f4f5" />
+
+  <rect x="56" y="44" width="1088" height="587" rx="16" fill="#09090b" stroke="#e4e4e7" />
+  <line x1="56" y1="92" x2="1144" y2="92" stroke="#27272a" />
+  <circle cx="88" cy="68" r="6" fill="#fb923c" />
+  <circle cx="110" cy="68" r="6" fill="#3f3f46" />
+  <circle cx="132" cy="68" r="6" fill="#3f3f46" />
+  <text x="170" y="73" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13" fill="#a1a1aa">pg-lens — explain analyze</text>
+
+  <!-- column headers -->
+  <g font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" fill="#71717a">
+    <text x="96" y="130">node</text>
+    <text x="620" y="130">self cost</text>
+    <text x="760" y="130">rows est / actual</text>
+  </g>
+  <line x1="76" y1="142" x2="1124" y2="142" stroke="#27272a" />
+
+  <!-- selected row -->
+  <rect x="76" y="270" width="1048" height="42" rx="8" fill="#27272a" />
+
+  <g font-family="ui-monospace, Menlo, Consolas, monospace" font-size="14">
+    <text x="96" y="196" fill="#f4f4f5">Limit</text>
+    <text x="620" y="196" fill="#a1a1aa">18.2k</text>
+    <text x="760" y="196" fill="#a1a1aa">12.0k / 12.0k</text>
+
+    <text x="96" y="246" fill="#f4f4f5">└─ Sort (top-N heapsort)</text>
+    <text x="620" y="246" fill="#a1a1aa">18.2k</text>
+    <text x="760" y="246" fill="#a1a1aa">12.0k / 12.0k</text>
+
+    <text x="96" y="300" fill="#f4f4f5">└─ Hash Join</text>
+    <text x="620" y="300" fill="#f4f4f5">9.4k</text>
+    <text x="760" y="300" fill="#f4f4f5">12.0k / 48.3k</text>
+
+    <text x="96" y="350" fill="#f4f4f5">├─ Seq Scan on courses</text>
+    <text x="620" y="350" fill="#a1a1aa">340</text>
+    <text x="760" y="350" fill="#a1a1aa">1.2k / 1.2k</text>
+
+    <text x="96" y="400" fill="#f4f4f5">└─ Hash</text>
+    <text x="620" y="400" fill="#a1a1aa">8.9k</text>
+    <text x="760" y="400" fill="#a1a1aa">12.0k / 48.3k</text>
+  </g>
+
+  <!-- cost bars -->
+  <g>
+    <rect x="960" y="188" width="150" height="8" rx="4" fill="#27272a" />
+    <rect x="960" y="188" width="150" height="8" rx="4" fill="#a1a1aa" />
+    <rect x="960" y="238" width="150" height="8" rx="4" fill="#27272a" />
+    <rect x="960" y="238" width="128" height="8" rx="4" fill="#a1a1aa" />
+    <rect x="960" y="392" width="150" height="8" rx="4" fill="#27272a" />
+    <rect x="960" y="392" width="62" height="8" rx="4" fill="#a1a1aa" />
+  </g>
+
+  <!-- estimate-error badge -->
+  <rect x="960" y="284" width="150" height="24" rx="12" fill="#fb923c" />
+  <text x="1035" y="300" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" fill="#09090b">4.0x under</text>
+
+  <!-- footer hint bar -->
+  <path d="M56 592 H1144 V615 A16 16 0 0 1 1128 631 H72 A16 16 0 0 1 56 615 Z" fill="#18181b" />
+  <line x1="56" y1="592" x2="1144" y2="592" stroke="#27272a" />
+  <text x="96" y="617" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13" fill="#a1a1aa">j/k move · enter expand · e export · q quit</text>
+</svg>

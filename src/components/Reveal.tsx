@@ -4,7 +4,7 @@ import { useEffect, useRef } from "react";
 
 /**
  * Wraps content that should fade/slide in when scrolled into view.
- * Pass style={{ "--reveal-delay": "150ms" } as React.CSSProperties} for stagger.
+ * Runs once per element; pass `delay` (ms) for a small stagger.
  */
 export default function Reveal({
   children,

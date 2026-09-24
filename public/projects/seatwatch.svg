@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675" role="img" aria-label="Seatwatch preview: terminal output of the course watcher">
+  <rect width="1200" height="675" fill="#f4f4f5" />
+
+  <rect x="56" y="44" width="1088" height="587" rx="16" fill="#09090b" stroke="#e4e4e7" />
+  <line x1="56" y1="92" x2="1144" y2="92" stroke="#27272a" />
+  <circle cx="88" cy="68" r="6" fill="#fb923c" />
+  <circle cx="110" cy="68" r="6" fill="#3f3f46" />
+  <circle cx="132" cy="68" r="6" fill="#3f3f46" />
+  <text x="170" y="73" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13" fill="#a1a1aa">seatwatch — watch CS3105</text>
+
+  <g font-family="ui-monospace, Menlo, Consolas, monospace" font-size="15">
+    <text x="96" y="150" fill="#fb923c">$</text>
+    <text x="114" y="150" fill="#f4f4f5">seatwatch watch CS3105 --notify discord</text>
+
+    <text x="96" y="196" fill="#a1a1aa">12:04:01</text>
+    <text x="290" y="196" fill="#f4f4f5">poll cs3105</text>
+    <text x="700" y="196" fill="#a1a1aa">0 / 120 seats    #39</text>
+
+    <text x="96" y="242" fill="#a1a1aa">12:31:44</text>
+    <text x="290" y="242" fill="#fb923c">SEAT OPEN</text>
+    <text x="700" y="242" fill="#f4f4f5">1 / 120 seats</text>
+
+    <text x="96" y="288" fill="#a1a1aa">12:31:44</text>
+    <text x="290" y="288" fill="#f4f4f5">notified 3 watchers</text>
+    <text x="700" y="288" fill="#a1a1aa">1 delivery each</text>
+
+    <text x="96" y="334" fill="#a1a1aa">12:31:45</text>
+    <text x="290" y="334" fill="#f4f4f5">rate limiter</text>
+    <text x="700" y="334" fill="#a1a1aa">41 / 60 tokens</text>
+
+    <text x="96" y="380" fill="#a1a1aa">12:47:12</text>
+    <text x="290" y="380" fill="#f4f4f5">poll cs3105</text>
+    <text x="700" y="380" fill="#a1a1aa">0 / 120 seats    #62</text>
+
+    <text x="96" y="426" fill="#a1a1aa">12:47:12</text>
+    <text x="290" y="426" fill="#71717a">exit</text>
+    <text x="700" y="426" fill="#71717a">^C</text>
+  </g>
+
+  <!-- status bar -->
+  <path d="M56 592 H1144 V615 A16 16 0 0 1 1128 631 H72 A16 16 0 0 1 56 615 Z" fill="#18181b" />
+  <line x1="56" y1="592" x2="1144" y2="592" stroke="#27272a" />
+  <text x="96" y="617" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13" fill="#a1a1aa">3 watchers · 1 seat claimed · uptime 43m</text>
+</svg>
