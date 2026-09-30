@@ -1,10 +1,9 @@
-import ActionButton from "@/components/ActionButton";
 import CVBand from "@/components/CVBand";
 import Hero from "@/components/Hero";
 import ProjectCard from "@/components/ProjectCard";
 import SectionHeading from "@/components/SectionHeading";
 import StudyList from "@/components/StudyList";
-import { featuredProjects, projects } from "@/data/projects";
+import { featuredProjects } from "@/data/projects";
 import { about, skills } from "@/data/site";
 
 export default function Home() {
@@ -13,18 +12,9 @@ export default function Home() {
       <Hero />
 
       <section id="projects" className="shell scroll-mt-20 py-16 lg:py-20">
-        <SectionHeading
-          cmd="ls ~/projects"
-          output="Projects"
-          description="Things I've shipped, each answering three questions: what it does, what it's built with, and what was hard."
-          action={
-            <ActionButton variant="outline" href="/projects">
-              all {projects.length}
-            </ActionButton>
-          }
-        />
+        <SectionHeading path="projects" title="Projects" />
 
-        <div className="mt-8 grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+        <div className="mt-8 grid gap-4 lg:grid-cols-2">
           {featuredProjects.map((project) => (
             <ProjectCard key={project.slug} project={project} />
           ))}
@@ -34,10 +24,10 @@ export default function Home() {
       <section id="about" className="scroll-mt-20 border-t border-border">
         <div className="shell grid gap-10 py-16 lg:grid-cols-[1fr_auto] lg:gap-16 lg:py-20">
           <div>
-            <SectionHeading cmd="cat about.md" output="About" />
+            <SectionHeading path="about" title="About" />
             <div className="mt-5 max-w-prose space-y-3">
               {about.map((paragraph) => (
-                <p key={paragraph.slice(0, 24)} className="out text-sm">
+                <p key={paragraph.slice(0, 24)} className="text-sm leading-relaxed text-text">
                   {paragraph}
                 </p>
               ))}
@@ -45,18 +35,14 @@ export default function Home() {
           </div>
 
           <div className="w-full lg:w-80">
-            <p className="prompt">
-              <span className="text-muted">$ </span>deps --list
-            </p>
-            <div className="mt-4 grid grid-cols-2 gap-x-6 gap-y-5">
+            <p className="font-mono text-xs text-muted">skills</p>
+            <div className="mt-3 grid grid-cols-2 gap-x-6 gap-y-4">
               {skills.map((group) => (
                 <div key={group.group}>
-                  <p className="font-mono text-xs uppercase tracking-wider text-muted">
-                    {group.group}
-                  </p>
-                  <ul className="mt-2 space-y-1.5">
+                  <p className="text-sm font-medium text-heading">{group.group}</p>
+                  <ul className="mt-1.5 space-y-1">
                     {group.items.map((item) => (
-                      <li key={item} className="font-mono text-[13px] text-text">
+                      <li key={item} className="text-sm text-text">
                         {item}
                       </li>
                     ))}
@@ -69,7 +55,7 @@ export default function Home() {
       </section>
 
       <section id="study" className="shell scroll-mt-20 py-16 lg:py-20">
-        <SectionHeading cmd="man study" output="Education" />
+        <SectionHeading path="education" title="Education" />
         <div className="mt-8">
           <StudyList />
         </div>

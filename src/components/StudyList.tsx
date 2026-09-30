@@ -2,15 +2,15 @@ import { study } from "@/data/site";
 
 const entries = [
   {
-    badge: study.university.badge,
+    label: "University",
     title: study.university.degree,
     org: study.university.school,
     period: study.university.period,
     detail: study.university.short,
   },
   {
-    badge: study.highSchool.badge,
-    title: "VWO Gymnasium",
+    label: "High School",
+    title: "Science",
     org: study.highSchool.school,
     period: study.highSchool.period,
     detail: study.highSchool.short,
@@ -21,12 +21,11 @@ export default function StudyList() {
   return (
     <ul className="grid gap-4 lg:grid-cols-2">
       {entries.map((entry) => (
-        <li key={entry.badge}>
+        <li key={entry.label}>
           <div className="h-full rounded-md border border-border bg-surface p-5">
             <div className="flex items-baseline justify-between gap-4">
-              <p className="prompt text-xs">
-                <span className="text-muted">man </span>
-                {entry.badge.toLowerCase()}
+              <p className="font-mono text-xs uppercase tracking-wider text-muted">
+                {entry.label}
               </p>
               <span className="font-mono text-xs text-muted">{entry.period}</span>
             </div>

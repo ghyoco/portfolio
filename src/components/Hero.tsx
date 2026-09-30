@@ -12,7 +12,7 @@ export default function Hero() {
   return (
     <section className="shell pb-16 pt-12 lg:pb-24 lg:pt-16">
       <div className="grid items-center gap-10 lg:grid-cols-[1fr_auto] lg:gap-14">
-        <div className="term max-w-xl">
+        <div className="term max-w-2xl border-heading/70">
           <div className="term-bar">
             <span className="term-dot" />
             <span className="term-dot" />
@@ -24,31 +24,15 @@ export default function Hero() {
             <p className="prompt">
               <span className="prompt-user">{site.handle}</span>
               <span className="text-muted">:~$ </span>
-              <span className="type-in">whoami</span>
-              <span className="cursor" aria-hidden="true" />
+              whoami
             </p>
 
             <div className="space-y-1.5">
               <h1 className="font-sans text-3xl font-semibold tracking-tight text-heading sm:text-4xl">
                 {site.name}
               </h1>
-              <p className="out">
-                {site.role}
-              </p>
-              <p className="out">
-                Right now that means {site.focus}.
-              </p>
-            </div>
-
-            <div className="grid gap-1.5 font-mono text-[13px] sm:grid-cols-2">
-              <p>
-                <span className="whitespace-pre text-muted">location  </span>
-                {site.location}
-              </p>
-              <p>
-                <span className="whitespace-pre text-muted">focus     </span>
-                {site.focus}
-              </p>
+              <p className="out">{site.role}</p>
+              <p className="out">{site.tagline}</p>
             </div>
 
             <div>
@@ -67,16 +51,6 @@ export default function Hero() {
                     className="text-text hover:text-heading"
                   >
                     github/
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href={site.linkedin}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-text hover:text-heading"
-                  >
-                    linkedin/
                   </a>
                 </li>
                 <li>
@@ -109,7 +83,7 @@ export default function Hero() {
         </div>
 
         <figure className="hidden lg:block">
-          <div className="term w-64 overflow-hidden p-2">
+          <div className="w-56 overflow-hidden rounded-lg border border-border bg-surface p-2">
             <Image
               src={site.avatar}
               alt={site.avatarAlt}
@@ -119,9 +93,6 @@ export default function Hero() {
               className="aspect-[4/5] w-full rounded-md object-cover"
             />
           </div>
-          <figcaption className="mt-2 text-center font-mono text-xs text-muted">
-            avatar.png
-          </figcaption>
         </figure>
       </div>
 

@@ -1,11 +1,10 @@
 import { Mail } from "lucide-react";
 
-import { GithubIcon, InstagramIcon, LinkedinIcon } from "@/components/icons";
+import { GithubIcon, InstagramIcon } from "@/components/icons";
 import { site } from "@/data/site";
 
 const links = [
   { href: site.github, label: "GitHub", Icon: GithubIcon, external: true },
-  { href: site.linkedin, label: "LinkedIn", Icon: LinkedinIcon, external: true },
   { href: site.instagram, label: "Instagram", Icon: InstagramIcon, external: true },
   { href: `mailto:${site.email}`, label: `Email ${site.email}`, Icon: Mail, external: false },
 ];

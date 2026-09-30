@@ -1,31 +1,25 @@
+"use client";
+
 import Image from "next/image";
-import { ExternalLink } from "lucide-react";
+import { ExternalLink, Images } from "lucide-react";
+import { useState } from "react";
 
 import { GithubIcon } from "@/components/icons";
+import GalleryModal from "@/components/GalleryModal";
 import type { Project } from "@/data/projects";
 
 export default function ProjectCard({
   project,
-  variant = "grid",
 }: {
   project: Project;
-  variant?: "grid" | "row";
 }) {
-  const isRow = variant === "row";
-  const path = isRow ? `~/projects/${project.slug}` : `${project.slug}`;
+  const [galleryOpen, setGalleryOpen] = useState(false);
+  const hasGallery = (project.gallery?.length ?? 0) > 0;
 
   return (
-    <article
-      className={`group border border-border bg-surface transition-colors duration-150 hover:border-heading/25 ${
-        isRow ? "flex flex-col gap-6 p-5 lg:flex-row lg:p-6" : "flex flex-col gap-4 p-5"
-      }`}
-    >
+    <article className="flex flex-col gap-4 rounded-lg border border-border bg-surface p-5 transition-colors duration-150 hover:border-heading/25">
       {project.image && (
-        <div
-          className={`overflow-hidden rounded-md border border-border ${
-            isRow ? "w-full shrink-0 self-start lg:w-72" : "w-full"
-          }`}
-        >
+        <div className="w-full overflow-hidden rounded-lg">
           <Image
             src={project.image}
             alt={`${project.title} preview`}
@@ -37,20 +31,13 @@ export default function ProjectCard({
         </div>
       )}
 
-      <div className="flex min-w-0 flex-1 flex-col gap-3">
+      <div className="flex flex-1 flex-col gap-3">
         <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
-          {isRow ? (
-            <p className="prompt">
-              <span className="text-muted">$ cat </span>
-              {path}
-            </p>
-          ) : (
-            <p className="font-mono text-xs text-muted">{path}</p>
-          )}
+          <p className="font-mono text-xs text-muted">~/{project.slug}</p>
           <span className="font-mono text-xs text-muted">{project.year}</span>
         </div>
 
-        <h3 className="font-sans text-lg font-semibold tracking-tight text-heading">
+        <h3 className="text-lg font-semibold tracking-tight text-heading">
           {project.liveUrl ? (
             <a
               href={project.liveUrl}
@@ -65,20 +52,13 @@ export default function ProjectCard({
           )}
         </h3>
 
-        <p className={`out text-sm ${isRow ? "" : "line-clamp-3"}`}>
-          {project.description}
-        </p>
+        <p className="text-sm leading-relaxed text-text line-clamp-3">{project.description}</p>
 
-        {isRow && project.hard && (
-          <div className="rounded-md border border-border bg-bg p-4">
-            <p className="prompt text-xs">
-              <span className="text-muted">diff --git a/README.md b/README.md</span>
-            </p>
-            <p className="prompt mt-1 text-xs">
-              <span className="font-semibold text-heading">+ </span>
-              <span className="text-text">{project.hard}</span>
-            </p>
-          </div>
+        {project.hard && (
+          <p className="text-sm leading-relaxed text-text">
+            <span className="font-medium text-heading">The hard part — </span>
+            {project.hard}
+          </p>
         )}
 
         <p className="mt-auto font-mono text-xs text-muted">
@@ -90,8 +70,18 @@ export default function ProjectCard({
           ))}
         </p>
 
-        {(project.githubUrl || project.liveUrl) && (
+        {(project.githubUrl || project.liveUrl || hasGallery) && (
           <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
+            {hasGallery && (
+              <button
+                type="button"
+                onClick={() => setGalleryOpen(true)}
+                className="inline-flex cursor-pointer items-center gap-1.5 text-sm text-text transition-colors hover:text-heading"
+              >
+                <Images size={14} />
+                photos
+              </button>
+            )}
             {project.githubUrl && (
               <a
                 href={project.githubUrl}
@@ -100,7 +90,7 @@ export default function ProjectCard({
                 className="inline-flex items-center gap-1.5 text-sm text-text transition-colors hover:text-heading"
               >
                 <GithubIcon size={14} />
-                source
+                GitHub
               </a>
             )}
             {project.liveUrl && (
@@ -111,12 +101,19 @@ export default function ProjectCard({
                 className="inline-flex items-center gap-1.5 text-sm text-text transition-colors hover:text-heading"
               >
                 <ExternalLink size={14} />
-                run it
+                Live demo
               </a>
             )}
           </div>
         )}
       </div>
+
+      <GalleryModal
+        open={galleryOpen}
+        title={project.slug}
+        images={project.gallery ?? []}
+        onClose={() => setGalleryOpen(false)}
+      />
     </article>
   );
 }

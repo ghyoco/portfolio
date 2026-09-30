@@ -16,9 +16,9 @@ export default function ResumePage() {
     <div className="shell py-14 lg:py-20">
       <div className="mx-auto max-w-4xl">
         <SectionHeading
-          cmd="less ~/cv.pdf"
-          output="CV"
-          description="One page, updated August 2026."
+          path="cv"
+          title="CV"
+          description="One page, updated October 2026."
           action={
             <ActionButton
               href={site.resume.href}
@@ -30,12 +30,17 @@ export default function ResumePage() {
           }
         />
 
-        <div className="term mt-8">
-          <div className="term-bar">
-            <span className="term-dot" />
-            <span className="term-dot" />
-            <span className="term-dot" />
-            <span className="term-title">cv.pdf — viewer</span>
+        <div className="mt-8 overflow-hidden rounded-lg border border-border bg-surface">
+          <div className="flex items-center justify-between gap-4 border-b border-border px-4 py-2.5">
+            <p className="font-mono text-sm text-muted">~/cv.pdf</p>
+            <a
+              href={site.resume.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-mono text-xs text-muted transition-colors hover:text-heading"
+            >
+              open in new tab →
+            </a>
           </div>
           <iframe
             src={`${site.resume.href}#view=Fit&toolbar=0&navpanes=0`}
@@ -67,9 +72,7 @@ export default function ResumePage() {
 
         <section className="mt-12 space-y-10">
           <div>
-            <p className="prompt">
-              <span className="text-muted">$ grep -i </span>experience ~/cv.pdf
-            </p>
+            <h2 className="font-mono text-xs text-muted">experience</h2>
             <div className="mt-4 space-y-6">
               {experience.map((job) => (
                 <div key={`${job.role}-${job.org}`}>
@@ -91,9 +94,7 @@ export default function ResumePage() {
           </div>
 
           <div>
-            <p className="prompt">
-              <span className="text-muted">$ grep -i </span>education ~/cv.pdf
-            </p>
+            <h2 className="font-mono text-xs text-muted">education</h2>
             <div className="mt-4">
               <p className="font-semibold text-heading">{education.degree}</p>
               <p className="mt-0.5 font-mono text-xs text-muted">
@@ -104,9 +105,7 @@ export default function ResumePage() {
           </div>
 
           <div>
-            <p className="prompt">
-              <span className="text-muted">$ cat </span>skills.txt
-            </p>
+            <h2 className="font-mono text-xs text-muted">skills</h2>
             <div className="mt-4 grid gap-4 sm:grid-cols-2">
               {skills.map((group) => (
                 <div key={group.group}>
