@@ -39,9 +39,11 @@ export const projects: Project[] = [
     hard: "Bird's-eye view inverse perspective mapping, sliding-window clustering, and 2nd-degree polynomial curve fitting (x = ay² + by + c), with a FastAPI backend deployed as a live web app on Hugging Face Spaces.",
     stack: ["Python", "OpenCV", "FastAPI", "Docker"],
     year: "2026",
-    image: "/projects/pathfinder.svg",
-    gallery: [],
-    liveUrl: "https://huggingface.co/spaces",
+    image: "/projects/pathfinder/pathfinder.png",
+    gallery: [
+      "/projects/pathfinder/pathfinder.png",
+    ],
+    liveUrl: "https://lane-detection-cv.vercel.app",
     featured: true,
   },
   {
@@ -52,8 +54,14 @@ export const projects: Project[] = [
     hard: "Lag, rolling-window, and cyclical time features fed into chronological TimeSeriesSplit cross-validation. XGBoost won with R² 0.9818, SMAPE 6.95%, and a 68.1% RMSE reduction over baseline, confirmed by Diebold-Mariano testing.",
     stack: ["Python", "scikit-learn", "TensorFlow", "XGBoost", "pandas"],
     year: "2026",
-    image: "/projects/energy-forecast.svg",
-    gallery: [],
+    image: "/projects/energy-forecast/building_load_1month.png",
+    gallery: [
+      "/projects/energy-forecast/building_load_1month.png",
+      "/projects/energy-forecast/forecasting_comparison.png",
+      "/projects/energy-forecast/residual_analysis.png",
+      "/projects/energy-forecast/cv_metrics_barchart.png",
+      "/projects/energy-forecast/feature_importance.png",
+    ],
     featured: true,
   },
 ];
