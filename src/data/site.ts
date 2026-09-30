@@ -7,26 +7,26 @@
  * freely. Everything else (components, pages, styles) is the site's design.
  */
 export const site = {
-  name: "Alex Rivera",
+  name: "Giovanni August",
   // Terminal-style handle shown in the nav: "~/alexrivera".
-  handle: "alexrivera",
+  handle: "giovanniaugust",
   // Used for metadata / Open Graph URLs. Point this at your deployed domain.
   url: "https://alexrivera.dev",
-  role: "Computer Science student at Delft University of Technology",
-  focus: "distributed systems and developer tooling",
-  location: "Delft, Netherlands",
-  status: "Open to Summer 2027 software engineering internships",
-  email: "alex@alexrivera.dev",
-  github: "https://github.com/alexrivera",
+  role: "Computer Science student at Bina Nusantara University",
+  focus: "AI, Machine Learning, Computer vision",
+  location: "Tangerang, Indonesia",
+  status: "Open to internships",
+  email: "giovanniaugustw@gmail.com",
+  github: "https://github.com/ghyoco",
   linkedin: "https://www.linkedin.com/in/alexrivera",
-  instagram: "https://www.instagram.com/alexrivera.dev/",
+  instagram: "https://www.instagram.com/augustgiovanni/",
   // Shown in the hero banner. Swap /public/avatar.svg for a real photo
   // (e.g. /avatar.jpg) and point this at it.
-  avatar: "/avatar.svg",
-  avatarAlt: "Alex Rivera",
+  avatar: "/avatar.png",
+  avatarAlt: "Giovanni August",
   resume: {
     href: "/cv.pdf",
-    downloadName: "Alex-Rivera-CV.pdf",
+    downloadName: "Giovanni-August-CV.pdf",
   },
 } as const;
 

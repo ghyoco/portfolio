@@ -1,42 +1,17 @@
 @import "tailwindcss";
 
-/*
- * Design system — merged.
- *
- * Base: the dark "repository" theme from my-portfolio — near-black editor
- * background, faint dot grid, one terminal-amber accent used sparingly.
- * On top: the shell / grain / glow layout utilities and transition polish
- * from portfolio-copy, re-tuned for dark surfaces.
- *
- * Token names are kept from portfolio-copy (paper/ink/muted/faint/accent) so
- * components read the same, but the values are the dark palette.
- */
 @theme inline {
-  --color-paper: #0b0d10; /* page background */
-  --color-soft: #0f1216; /* one step up: section bands */
-  --color-mist: #14181e; /* two steps up: raised surfaces */
-  --color-line: rgba(255, 255, 255, 0.08);
-  --color-ink: #e7e9ee; /* primary text */
-  --color-muted: #9aa1ad;
-  --color-faint: #6b7280;
-  --color-accent: #ffb224;
-  --color-accent-bright: #ffc95e;
+  --color-bg: #0a0a0b;
+  --color-surface: #111113;
+  --color-elevated: #19191c;
+  --color-border: #222225;
+  --color-text: #b4b4bd;
+  --color-heading: #e0e0e6;
+  --color-muted: #5c5c66;
+  --color-accent: #e0e0e6;
 
   --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-geist-mono), ui-monospace, "SFMono-Regular", monospace;
-
-  --animate-reveal: reveal 650ms cubic-bezier(0.16, 1, 0.3, 1) both;
-}
-
-@keyframes reveal {
-  from {
-    opacity: 0;
-    transform: translateY(14px);
-  }
-  to {
-    opacity: 1;
-    transform: none;
-  }
 }
 
 html {
@@ -45,17 +20,16 @@ html {
 }
 
 body {
-  background-color: var(--color-paper);
-  color: var(--color-ink);
+  background-color: var(--color-bg);
+  color: var(--color-text);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
 }
 
-/* One shared page shell. */
 .shell {
   margin-inline: auto;
   width: 100%;
-  max-width: 80rem;
+  max-width: 64rem;
   padding-inline: 1.5rem;
 }
 
@@ -65,137 +39,45 @@ body {
   }
 }
 
-@media (min-width: 1024px) {
-  .shell {
-    padding-inline: 2.5rem;
-  }
-}
-
-/* ---- Texture: faint dot grid over a soft radial glow (repo feel) ---- */
-.bg-grid {
-  background-image:
-    radial-gradient(ellipse 60% 45% at 50% -5%, rgba(255, 178, 36, 0.07), transparent 70%),
-    radial-gradient(circle, rgba(255, 255, 255, 0.045) 1px, transparent 1px);
-  background-size:
-    100% 100%,
-    26px 26px;
-}
-
-/* Square grid for the dark bands, so they read as a surface, not a slab. */
-.grid-lines {
-  background-image:
-    linear-gradient(to right, rgba(255, 255, 255, 0.045) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.045) 1px, transparent 1px);
-  background-size: 72px 72px;
-}
-
-/* Hero band: the same grid, plus a warm glow behind the portrait. */
-.hero-bg {
-  background-image:
-    radial-gradient(circle, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
-    radial-gradient(48rem 30rem at 78% 10%, rgba(255, 178, 36, 0.14), transparent 62%),
-    radial-gradient(46rem 30rem at 8% 96%, rgba(255, 255, 255, 0.05), transparent 60%);
-  background-size:
-    26px 26px,
-    auto,
-    auto;
-}
-
-/* Paper noise, multiplied over the dark bands. */
-.grain::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-  opacity: 0.16;
-  mix-blend-mode: overlay;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23g)'/%3E%3C/svg%3E");
-  background-size: 160px 160px;
-}
-
-.grain {
-  position: relative;
-  isolation: isolate;
-}
-
-/* One short transition for every link, so states never snap. */
 a {
-  transition:
-    color 150ms ease,
-    background-color 150ms ease,
-    border-color 150ms ease,
-    text-decoration-color 150ms ease;
+  transition: color 120ms ease;
 }
 
 ::selection {
-  background-color: var(--color-accent);
-  color: #0b0d10;
+  background-color: var(--color-heading);
+  color: var(--color-bg);
 }
 
 :focus-visible {
-  outline: 2px solid var(--color-accent);
+  outline: 1.5px solid var(--color-heading);
   outline-offset: 2px;
-  border-radius: 4px;
+  border-radius: 3px;
 }
 
-/* ---- Reveal-on-scroll (small, once, no loops) ---- */
-.reveal {
-  opacity: 0;
-  transform: translateY(14px);
-  transition:
-    opacity 0.6s ease-out,
-    transform 0.6s ease-out;
-  transition-delay: var(--reveal-delay, 0ms);
-}
-.reveal.is-visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* ---- CV modal ---- */
+/* CV modal */
 @keyframes modal-in {
-  from {
-    opacity: 0;
-    transform: translateY(10px) scale(0.99);
-  }
-  to {
-    opacity: 1;
-    transform: none;
-  }
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: none; }
 }
 .modal-in {
-  animation: modal-in 220ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation: modal-in 180ms ease-out both;
 }
 @keyframes backdrop-in {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 .backdrop-in {
-  animation: backdrop-in 180ms ease-out both;
+  animation: backdrop-in 140ms ease-out both;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-
-  .reveal,
-  .modal-in,
-  .backdrop-in {
+  html { scroll-behavior: auto; }
+  .modal-in, .backdrop-in {
     animation: none;
     opacity: 1;
     transform: none;
-    transition: none;
   }
-
-  *,
-  *::before,
-  *::after {
+  *, *::before, *::after {
     transition-duration: 1ms !important;
     animation-duration: 1ms !important;
   }

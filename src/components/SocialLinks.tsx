@@ -11,14 +11,12 @@ const links = [
 ];
 
 export default function SocialLinks({
-  size = 20,
+  size = 18,
   className = "",
 }: {
   size?: number;
   className?: string;
 }) {
-  const toneClass = "text-muted hover:bg-mist hover:text-accent";
-
   return (
     <ul className={`flex items-center gap-1 ${className}`}>
       {links.map(({ href, label, Icon, external }) => (
@@ -27,7 +25,7 @@ export default function SocialLinks({
             href={href}
             {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
             aria-label={label}
-            className={`inline-flex rounded-full p-2.5 transition-[color,background-color,transform] duration-200 hover:-translate-y-0.5 ${toneClass}`}
+            className="inline-flex rounded-md p-2 text-muted transition-colors hover:text-accent"
           >
             <Icon size={size} />
           </a>

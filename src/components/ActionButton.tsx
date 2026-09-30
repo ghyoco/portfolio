@@ -1,10 +1,16 @@
-import type { ReactNode } from "react";
+import type { ReactNode, MouseEvent } from "react";
 
-/**
- * Every call to action on the site is a link, so this is one component instead
- * of four sets of classes. `onClick` is optional so buttons can also open the
- * CV modal instead of navigating.
- */
+interface ActionButtonProps {
+  href: string;
+  children: ReactNode;
+  icon?: ReactNode;
+  variant?: "solid" | "outline";
+  external?: boolean;
+  download?: string;
+  className?: string;
+  onClick?: (e: MouseEvent<HTMLAnchorElement>) => void;
+}
+
 export default function ActionButton({
   href,
   children,
@@ -14,19 +20,10 @@ export default function ActionButton({
   download,
   className = "",
   onClick,
-}: {
-  href: string;
-  children: ReactNode;
-  icon?: ReactNode;
-  variant?: "solid" | "outline";
-  external?: boolean;
-  download?: string;
-  className?: string;
-  onClick?: (e: React.MouseEvent<HTMLAnchorElement>) => void;
-}) {
-  const styles: Record<"solid" | "outline", string> = {
-    solid: "bg-accent text-paper hover:bg-ink",
-    outline: "border border-line bg-mist text-ink hover:border-accent/60 hover:text-accent",
+}: ActionButtonProps) {
+  const styles = {
+    solid: "bg-heading text-bg hover:bg-white",
+    outline: "border border-border text-text hover:border-heading/40 hover:text-heading",
   };
 
   const linkProps = external
@@ -40,7 +37,7 @@ export default function ActionButton({
       href={href}
       {...linkProps}
       onClick={onClick}
-      className={`inline-flex items-center justify-center gap-2 rounded-full px-5 py-2.5 text-sm font-medium whitespace-nowrap transition-colors ${styles[variant]} ${className}`}
+      className={`inline-flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium transition-colors ${styles[variant]} ${className}`}
     >
       {icon}
       {children}

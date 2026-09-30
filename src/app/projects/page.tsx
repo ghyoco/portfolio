@@ -10,34 +10,34 @@ import { site } from "@/data/site";
 
 export const metadata: Metadata = {
   title: "Projects",
-  description: `Selected software projects by ${site.name}: what each one does, the stack it uses and the hard part of building it.`,
+  description: `Selected software projects by ${site.name}.`,
   alternates: { canonical: "/projects" },
 };
 
 export default function ProjectsPage() {
   return (
-    <div className="shell py-16 lg:py-20">
+    <div className="shell py-14 lg:py-20">
       <Link
         href="/"
         className="inline-flex items-center gap-1.5 font-mono text-xs text-muted transition-colors hover:text-accent"
       >
         <ArrowLeft size={14} />
-        back home
+        cd ~
       </Link>
 
       <SectionHeading
-        className="mt-8"
+        className="mt-6"
         path="projects"
         title="All projects"
-        description="Everything I've built that I'd defend in a code review — coursework included, because the interesting bugs were in there too."
+        description="Everything I've built that I'd show in a code review."
         action={
           <ActionButton href={site.github} external>
-            More on GitHub
+            GitHub
           </ActionButton>
         }
       />
 
-      <div className="mt-10 grid gap-6">
+      <div className="mt-8 grid gap-4">
         {projects.map((project, i) => (
           <ProjectCard key={project.slug} project={project} index={i} variant="row" />
         ))}

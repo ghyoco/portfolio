@@ -1,4 +1,3 @@
-import Reveal from "@/components/Reveal";
 import { study } from "@/data/site";
 
 const entries = [
@@ -20,23 +19,21 @@ const entries = [
 
 export default function StudyList() {
   return (
-    <ul className="grid gap-5 lg:grid-cols-2">
-      {entries.map((entry, i) => (
+    <ul className="grid gap-4 lg:grid-cols-2">
+      {entries.map((entry) => (
         <li key={entry.badge}>
-          <Reveal delay={i * 100}>
-            <div className="group flex h-full gap-5 rounded-2xl border border-line bg-mist p-6 transition-[border-color,transform] duration-300 hover:-translate-y-0.5 hover:border-accent/50">
-              <span className="grid size-11 shrink-0 place-items-center rounded-xl bg-mist font-mono text-xs font-semibold text-accent transition-colors duration-300 group-hover:bg-accent group-hover:text-paper">
-                {entry.badge}
-              </span>
-              <div>
-                <h3 className="font-semibold tracking-tight">{entry.title}</h3>
-                <p className="mt-1 text-sm text-muted">
-                  {entry.org} · <span className="font-mono text-xs">{entry.period}</span>
-                </p>
-                <p className="mt-3 text-sm leading-relaxed text-muted">{entry.detail}</p>
-              </div>
+          <div className="flex h-full gap-4 rounded-lg border border-border p-5">
+            <span className="shrink-0 font-mono text-xs text-accent">
+              {entry.badge}
+            </span>
+            <div>
+              <h3 className="font-semibold text-heading">{entry.title}</h3>
+              <p className="mt-1 text-sm text-muted">
+                {entry.org} · <span className="font-mono text-xs">{entry.period}</span>
+              </p>
+              <p className="mt-2 text-sm leading-relaxed text-text">{entry.detail}</p>
             </div>
-          </Reveal>
+          </div>
         </li>
       ))}
     </ul>
