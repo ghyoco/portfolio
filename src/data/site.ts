@@ -17,6 +17,7 @@ export const site = {
   phone: "089680029862",
   github: "https://github.com/ghyoco",
   instagram: "https://www.instagram.com/augustgiovanni/",
+  linkedin: "https://www.linkedin.com/in/giovanni-august",
   avatar: "/avatar.png",
   avatarAlt: "Giovanni August",
   resume: {
@@ -27,8 +28,8 @@ export const site = {
 
 export const about: string[] = [
   "I'm a fifth-year computer science undergraduate at Bina Nusantara University. Most of my work so far has been hands-on machine learning: a real-time lane detection pipeline and a building energy forecasting model, both built end to end from data to deployed app.",
-  "Along the way I've picked up the unglamorous parts too — feature engineering, cross-validation that respects time order, Docker deployments, and enough FastAPI to put a model behind an API.",
-  "Right now I'm looking for an AI internship or a software engineering role where I can apply that to real-world problems.",
+  "Along the way I've picked up the unglamorous parts too: feature engineering, cross-validation that respects time order, Docker deployments, and enough FastAPI to put a model behind an API.",
+  "Right now I'm looking for an AI internship or a software engineering role where I can apply that to real problems.",
 ];
 
 export const quickFacts: { label: string; value: string }[] = [

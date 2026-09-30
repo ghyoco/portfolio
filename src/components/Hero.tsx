@@ -64,6 +64,16 @@ export default function Hero() {
                   </a>
                 </li>
                 <li>
+                  <a
+                    href={site.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-text hover:text-heading"
+                  >
+                    linkedin/
+                  </a>
+                </li>
+                <li>
                   <button
                     type="button"
                     onClick={() => setCvOpen(true)}
@@ -82,7 +92,7 @@ export default function Hero() {
           </div>
         </div>
 
-        <figure className="hidden lg:block">
+        <figure className="justify-self-center lg:justify-self-start">
           <div className="w-56 overflow-hidden rounded-lg border border-border bg-surface p-2">
             <Image
               src={site.avatar}

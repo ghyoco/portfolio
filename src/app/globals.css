@@ -145,6 +145,28 @@ a {
 }
 
 /* ------------------------------------------------------------------ */
+/* Scroll reveal: text fades in when it enters the viewport and back   */
+/* out when it leaves, driven by IntersectionObserver in Reveal.tsx.   */
+/* Content is visible by default; JS arms the effect, so no-JS users   */
+/* and crawlers always see the text.                                   */
+/* ------------------------------------------------------------------ */
+
+.reveal-armed {
+  opacity: 0;
+  transform: translateY(16px);
+}
+
+.reveal-armed.is-visible {
+  opacity: 1;
+  transform: none;
+  transition: opacity 500ms ease, transform 500ms ease;
+}
+
+.reveal-armed:not(.is-visible) {
+  transition: opacity 300ms ease, transform 300ms ease;
+}
+
+/* ------------------------------------------------------------------ */
 /* Modal (kept from the incumbent; it already respects reduced motion) */
 /* ------------------------------------------------------------------ */
 
@@ -165,6 +187,11 @@ a {
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
+  .reveal-armed {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
   .modal-in, .backdrop-in {
     animation: none;
     opacity: 1;
