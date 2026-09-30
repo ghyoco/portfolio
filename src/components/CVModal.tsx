@@ -3,7 +3,6 @@
 import { Download, X } from "lucide-react";
 import { useEffect, useRef } from "react";
 
-import CVDocument from "@/components/CVDocument";
 import { site } from "@/data/site";
 
 export default function CVModal({ open, onClose }: { open: boolean; onClose: () => void }) {
@@ -64,9 +63,11 @@ export default function CVModal({ open, onClose }: { open: boolean; onClose: () 
           </div>
         </div>
 
-        <div className="min-h-0 flex-1 overflow-y-auto p-3 sm:p-6">
-          <CVDocument />
-        </div>
+        <iframe
+          src={`${site.resume.href}#view=Fit&toolbar=0&navpanes=0`}
+          title={`${site.name} CV`}
+          className="min-h-0 flex-1 bg-surface"
+        />
       </div>
     </div>
   );
