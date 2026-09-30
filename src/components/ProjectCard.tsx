@@ -6,78 +6,82 @@ import type { Project } from "@/data/projects";
 
 export default function ProjectCard({
   project,
-  index,
   variant = "grid",
 }: {
   project: Project;
-  index?: number;
   variant?: "grid" | "row";
 }) {
   const isRow = variant === "row";
+  const path = isRow ? `~/projects/${project.slug}` : `${project.slug}`;
 
   return (
     <article
-      className={`border border-border rounded-lg p-5 hover:border-border flex flex-col ${
-        isRow ? "lg:flex-row gap-5" : "gap-4"
+      className={`group border border-border bg-surface transition-colors duration-150 hover:border-heading/25 ${
+        isRow ? "flex flex-col gap-6 p-5 lg:flex-row lg:p-6" : "flex flex-col gap-4 p-5"
       }`}
     >
       {project.image && (
-        <div className={`overflow-hidden rounded-lg self-start ${isRow ? "w-full lg:w-72 lg:shrink-0" : "w-full"}`}>
+        <div
+          className={`overflow-hidden rounded-md border border-border ${
+            isRow ? "w-full shrink-0 self-start lg:w-72" : "w-full"
+          }`}
+        >
           <Image
             src={project.image}
-            alt={project.title}
+            alt={`${project.title} preview`}
             width={1200}
             height={675}
             unoptimized={project.image.endsWith(".svg")}
-            className="h-auto w-full object-cover rounded-lg"
+            className="h-auto w-full object-cover"
           />
         </div>
       )}
 
-      <div className="flex flex-1 flex-col gap-3">
-        <div className="flex items-baseline justify-between gap-4">
-          <div className="flex items-baseline gap-2">
-            {index !== undefined && (
-              <span className="font-mono text-xs text-muted">
-                {String(index + 1).padStart(2, "0")}
-              </span>
-            )}
-            <h3 className="font-semibold text-heading">
-              {project.liveUrl ? (
-                <a
-                  href={project.liveUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-accent"
-                >
-                  {project.title}
-                </a>
-              ) : (
-                project.title
-              )}
-            </h3>
-          </div>
-          <span className="shrink-0 font-mono text-xs text-muted">
-            {project.year}
-          </span>
+      <div className="flex min-w-0 flex-1 flex-col gap-3">
+        <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+          {isRow ? (
+            <p className="prompt">
+              <span className="text-muted">$ cat </span>
+              {path}
+            </p>
+          ) : (
+            <p className="font-mono text-xs text-muted">{path}</p>
+          )}
+          <span className="font-mono text-xs text-muted">{project.year}</span>
         </div>
 
-        <p
-          className={`text-sm leading-relaxed text-text ${
-            isRow ? "" : "line-clamp-3"
-          }`}
-        >
+        <h3 className="font-sans text-lg font-semibold tracking-tight text-heading">
+          {project.liveUrl ? (
+            <a
+              href={project.liveUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline-offset-4 hover:underline"
+            >
+              {project.title}
+            </a>
+          ) : (
+            project.title
+          )}
+        </h3>
+
+        <p className={`out text-sm ${isRow ? "" : "line-clamp-3"}`}>
           {project.description}
         </p>
 
         {isRow && project.hard && (
-          <p className="bg-surface rounded-lg p-4 text-sm leading-relaxed text-text">
-            <span className="font-medium text-accent">The hard part — </span>
-            {project.hard}
-          </p>
+          <div className="rounded-md border border-border bg-bg p-4">
+            <p className="prompt text-xs">
+              <span className="text-muted">diff --git a/README.md b/README.md</span>
+            </p>
+            <p className="prompt mt-1 text-xs">
+              <span className="font-semibold text-heading">+ </span>
+              <span className="text-text">{project.hard}</span>
+            </p>
+          </div>
         )}
 
-        <p className="font-mono text-xs text-muted">
+        <p className="mt-auto font-mono text-xs text-muted">
           {project.stack.map((tech, i) => (
             <span key={tech}>
               {i > 0 && " · "}
@@ -87,16 +91,16 @@ export default function ProjectCard({
         </p>
 
         {(project.githubUrl || project.liveUrl) && (
-          <div className="mt-auto flex flex-wrap items-center gap-4 pt-1">
+          <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
             {project.githubUrl && (
               <a
                 href={project.githubUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 text-sm text-text hover:text-accent"
+                className="inline-flex items-center gap-1.5 text-sm text-text transition-colors hover:text-heading"
               >
                 <GithubIcon size={14} />
-                GitHub
+                source
               </a>
             )}
             {project.liveUrl && (
@@ -104,10 +108,10 @@ export default function ProjectCard({
                 href={project.liveUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 text-sm text-text hover:text-accent"
+                className="inline-flex items-center gap-1.5 text-sm text-text transition-colors hover:text-heading"
               >
                 <ExternalLink size={14} />
-                Live demo
+                run it
               </a>
             )}
           </div>

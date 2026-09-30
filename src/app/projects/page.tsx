@@ -19,7 +19,7 @@ export default function ProjectsPage() {
     <div className="shell py-14 lg:py-20">
       <Link
         href="/"
-        className="inline-flex items-center gap-1.5 font-mono text-xs text-muted transition-colors hover:text-accent"
+        className="inline-flex items-center gap-1.5 font-mono text-xs text-muted transition-colors hover:text-heading"
       >
         <ArrowLeft size={14} />
         cd ~
@@ -27,19 +27,19 @@ export default function ProjectsPage() {
 
       <SectionHeading
         className="mt-6"
-        path="projects"
-        title="All projects"
-        description="Everything I've built that I'd show in a code review."
+        cmd="tree ~/projects"
+        output="All projects"
+        description="Everything I've built that I'd put in front of a code review."
         action={
           <ActionButton href={site.github} external>
-            GitHub
+            source
           </ActionButton>
         }
       />
 
       <div className="mt-8 grid gap-4">
-        {projects.map((project, i) => (
-          <ProjectCard key={project.slug} project={project} index={i} variant="row" />
+        {projects.map((project) => (
+          <ProjectCard key={project.slug} project={project} variant="row" />
         ))}
       </div>
     </div>

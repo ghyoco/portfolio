@@ -37,7 +37,7 @@ export default function ActionButton({
       href={href}
       {...linkProps}
       onClick={onClick}
-      className={`inline-flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium transition-colors ${styles[variant]} ${className}`}
+      className={`inline-flex items-center gap-2 rounded-md px-4 py-2 font-mono text-sm font-medium transition-colors ${styles[variant]} ${className}`}
     >
       {icon}
       {children}

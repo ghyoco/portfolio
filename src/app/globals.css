@@ -7,8 +7,9 @@
   --color-border: #222225;
   --color-text: #b4b4bd;
   --color-heading: #e0e0e6;
-  --color-muted: #5c5c66;
+  --color-muted: #61616b;
   --color-accent: #e0e0e6;
+  --color-line: #2b2b30;
 
   --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-geist-mono), ui-monospace, "SFMono-Regular", monospace;
@@ -26,6 +27,10 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+/* ------------------------------------------------------------------ */
+/* Layout shell: a terminal column, not a web page column.             */
+/* ------------------------------------------------------------------ */
+
 .shell {
   margin-inline: auto;
   width: 100%;
@@ -39,6 +44,106 @@ body {
   }
 }
 
+/* ------------------------------------------------------------------ */
+/* Terminal window chrome.                                             */
+/* ------------------------------------------------------------------ */
+
+.term {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.term-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-bottom: 1px solid var(--color-border);
+  padding: 0.5rem 0.875rem;
+  background-color: var(--color-elevated);
+}
+
+.term-dot {
+  width: 0.625rem;
+  height: 0.625rem;
+  border-radius: 9999px;
+  background: var(--color-line);
+  border: 1px solid var(--color-border);
+}
+
+.term-title {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--color-muted);
+  margin-left: 0.25rem;
+}
+
+/* ------------------------------------------------------------------ */
+/* Session text grammar.                                               */
+/* ------------------------------------------------------------------ */
+
+.prompt {
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  color: var(--color-heading);
+}
+
+.prompt-user {
+  color: var(--color-muted);
+}
+
+.comment {
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  color: var(--color-muted);
+}
+
+.out {
+  font-size: 0.9375rem;
+  line-height: 1.7;
+  color: var(--color-text);
+}
+
+/* ------------------------------------------------------------------ */
+/* Typing block cursor. Only the hero command types; everything else   */
+/* is static so the page stays quiet while scrolling.                  */
+/* ------------------------------------------------------------------ */
+
+.cursor {
+  display: inline-block;
+  width: 0.55em;
+  height: 1.1em;
+  vertical-align: text-bottom;
+  background-color: var(--color-heading);
+  animation: cursor-blink 1.1s steps(2, start) infinite;
+}
+
+@keyframes cursor-blink {
+  to {
+    visibility: hidden;
+  }
+}
+
+@keyframes caret-in {
+  from {
+    clip-path: inset(0 100% 0 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+.type-in {
+  display: inline-block;
+  clip-path: inset(0 100% 0 0);
+  animation: caret-in 900ms steps(18, end) 250ms forwards;
+}
+
+/* ------------------------------------------------------------------ */
+/* Hover language: text brightens; chrome never transforms.            */
+/* ------------------------------------------------------------------ */
+
 a {
   transition: color 120ms ease;
 }
@@ -51,10 +156,33 @@ a {
 :focus-visible {
   outline: 1.5px solid var(--color-heading);
   outline-offset: 2px;
-  border-radius: 3px;
+  border-radius: 2px;
 }
 
-/* CV modal */
+/* Thin scrollbar in the palette. */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-line) transparent;
+}
+
+*::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: var(--color-line);
+  border-radius: 4px;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* ------------------------------------------------------------------ */
+/* Modal (kept from the incumbent; it already respects reduced motion) */
+/* ------------------------------------------------------------------ */
+
 @keyframes modal-in {
   from { opacity: 0; transform: translateY(8px); }
   to { opacity: 1; transform: none; }
@@ -77,8 +205,14 @@ a {
     opacity: 1;
     transform: none;
   }
+  .type-in {
+    animation: none;
+    clip-path: none;
+  }
+  .cursor {
+    animation: none;
+  }
   *, *::before, *::after {
     transition-duration: 1ms !important;
-    animation-duration: 1ms !important;
   }
 }

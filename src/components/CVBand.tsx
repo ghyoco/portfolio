@@ -10,12 +10,16 @@ export default function CVBand() {
   const [cvOpen, setCvOpen] = useState(false);
 
   return (
-    <section id="cv" className="border-t border-border py-16">
+    <section id="cv" className="border-t border-border py-16 lg:py-20">
       <div className="shell flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
         <div>
-          <h2 className="text-lg font-semibold text-heading">Grab my CV</h2>
-          <p className="mt-1 text-sm text-text">
-            Preview it in your browser or download a copy to keep.
+          <p className="prompt">
+            <span className="text-muted">$ cp </span>
+            ~/cv.pdf
+            <span className="text-muted"> ~/Downloads</span>
+          </p>
+          <p className="mt-2 text-sm text-text">
+            One page, current as of August 2026. Preview it here or keep a copy.
           </p>
         </div>
         <div className="flex items-center gap-3">

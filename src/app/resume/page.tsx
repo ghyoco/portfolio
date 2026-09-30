@@ -16,8 +16,8 @@ export default function ResumePage() {
     <div className="shell py-14 lg:py-20">
       <div className="mx-auto max-w-4xl">
         <SectionHeading
-          path="cv"
-          title="CV"
+          cmd="less ~/cv.pdf"
+          output="CV"
           description="One page, updated August 2026."
           action={
             <ActionButton
@@ -30,19 +30,12 @@ export default function ResumePage() {
           }
         />
 
-        <div className="mt-8 overflow-hidden rounded-xl border border-border bg-surface">
-          <div className="flex items-center justify-between gap-4 border-b border-border px-4 py-2.5">
-            <p className="font-mono text-sm text-muted">
-              ~/cv.pdf
-            </p>
-            <a
-              href={site.resume.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="font-mono text-xs text-muted transition-colors hover:text-accent"
-            >
-              open in new tab →
-            </a>
+        <div className="term mt-8">
+          <div className="term-bar">
+            <span className="term-dot" />
+            <span className="term-dot" />
+            <span className="term-dot" />
+            <span className="term-title">cv.pdf — viewer</span>
           </div>
           <iframe
             src={`${site.resume.href}#view=Fit&toolbar=0&navpanes=0`}
@@ -57,36 +50,37 @@ export default function ResumePage() {
             href={site.resume.href}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-text underline decoration-border underline-offset-4 transition-colors hover:text-accent"
+            className="text-text underline decoration-border underline-offset-4 transition-colors hover:text-heading"
           >
             Open directly
-          </a>
-          {" "}or{" "}
+          </a>{" "}
+          or{" "}
           <a
             href={site.resume.href}
             download={site.resume.downloadName}
-            className="text-text underline decoration-border underline-offset-4 transition-colors hover:text-accent"
+            className="text-text underline decoration-border underline-offset-4 transition-colors hover:text-heading"
           >
             download
           </a>
           .
         </p>
 
-        {/* Structured fallback below the embed */}
         <section className="mt-12 space-y-10">
           <div>
-            <h2 className="font-mono text-xs text-muted">experience</h2>
+            <p className="prompt">
+              <span className="text-muted">$ grep -i </span>experience ~/cv.pdf
+            </p>
             <div className="mt-4 space-y-6">
               {experience.map((job) => (
                 <div key={`${job.role}-${job.org}`}>
                   <p className="font-semibold text-heading">{job.role}</p>
-                  <p className="mt-0.5 text-sm text-muted">
-                    {job.org} · <span className="font-mono text-xs">{job.period}</span>
+                  <p className="mt-0.5 font-mono text-xs text-muted">
+                    {job.org} · {job.period}
                   </p>
                   <ul className="mt-2 space-y-1 text-sm text-text">
                     {job.points.map((point) => (
                       <li key={point} className="flex gap-2">
-                        <span className="mt-1.5 size-1 shrink-0 rounded-full bg-muted" aria-hidden="true" />
+                        <span className="mt-2 size-1 shrink-0 rounded-full bg-muted" aria-hidden="true" />
                         {point}
                       </li>
                     ))}
@@ -97,23 +91,29 @@ export default function ResumePage() {
           </div>
 
           <div>
-            <h2 className="font-mono text-xs text-muted">education</h2>
+            <p className="prompt">
+              <span className="text-muted">$ grep -i </span>education ~/cv.pdf
+            </p>
             <div className="mt-4">
               <p className="font-semibold text-heading">{education.degree}</p>
-              <p className="mt-0.5 text-sm text-muted">
-                {education.school} · <span className="font-mono text-xs">{education.period}</span>
+              <p className="mt-0.5 font-mono text-xs text-muted">
+                {education.school} · {education.period}
               </p>
               <p className="mt-2 text-sm text-text">{education.coursework}</p>
             </div>
           </div>
 
           <div>
-            <h2 className="font-mono text-xs text-muted">skills</h2>
+            <p className="prompt">
+              <span className="text-muted">$ cat </span>skills.txt
+            </p>
             <div className="mt-4 grid gap-4 sm:grid-cols-2">
               {skills.map((group) => (
                 <div key={group.group}>
-                  <p className="text-sm font-medium text-heading">{group.group}</p>
-                  <p className="mt-1 text-sm text-text">{group.items.join(", ")}</p>
+                  <p className="font-mono text-xs uppercase tracking-wider text-muted">
+                    {group.group}
+                  </p>
+                  <p className="mt-1.5 font-mono text-[13px] text-text">{group.items.join(", ")}</p>
                 </div>
               ))}
             </div>

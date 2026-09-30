@@ -25,7 +25,7 @@ export default function SocialLinks({
             href={href}
             {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
             aria-label={label}
-            className="inline-flex rounded-md p-2 text-muted transition-colors hover:text-accent"
+            className="inline-flex rounded-md p-2 text-muted transition-colors hover:text-heading"
           >
             <Icon size={size} />
           </a>
