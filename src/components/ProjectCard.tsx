@@ -19,7 +19,7 @@ export default function ProjectCard({
   return (
     <article className="flex flex-col gap-4 rounded-lg border border-border bg-surface p-5 transition-colors duration-150 hover:border-heading/25">
       {project.image && (
-        <div className="relative aspect-video w-full overflow-hidden rounded-lg border border-border bg-elevated">
+        <div className="relative aspect-video w-full overflow-hidden rounded-lg border border-border bg-white">
           <Image
             src={project.image}
             alt={`${project.title} preview`}

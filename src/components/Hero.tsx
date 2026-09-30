@@ -82,11 +82,6 @@ export default function Hero() {
                     cv.pdf
                   </button>
                 </li>
-                <li>
-                  <a href="#projects" className="text-text hover:text-heading">
-                    projects/
-                  </a>
-                </li>
               </ul>
             </div>
           </div>

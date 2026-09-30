@@ -14,12 +14,12 @@ export default function CVBand() {
       <div className="shell flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
         <div>
           <p className="prompt">
-            <span className="text-muted">$ cp </span>
+            <span className="text-muted"></span>
             ~/cv.pdf
             <span className="text-muted"> ~/Downloads</span>
           </p>
           <p className="mt-2 text-sm text-text">
-            One page, current as of August 2026. Preview it here or keep a copy.
+            Preview it here or keep a copy.
           </p>
         </div>
         <div className="flex items-center gap-3">
