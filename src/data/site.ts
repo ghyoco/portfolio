@@ -1,16 +1,10 @@
-/**
- * All personal content for the site lives in this file (and in `projects.ts`).
- * Data follows Giovanni's FlowCV resume (October 2026).
- */
 export const site = {
   name: "Giovanni August Immanuel Wijaya",
-  // Terminal-style handle shown in the nav: "~/giovanniaugust".
   handle: "giovanniaugust",
-  // Used for metadata / Open Graph URLs. Point this at your deployed domain.
-  url: "https://giovanniaugust.dev",
+  url: "https://portfolio-giovanni-august.vercel.app/",
   role: "Computer science undergraduate at Bina Nusantara University",
   focus: "AI, machine learning, and computer vision",
-  tagline: "I build computer vision pipelines and predictive ML models. Looking for an AI internship or a software engineering role.",
+  tagline: "I build computer vision pipelines and predictive ML models. Looking for an AI/ML Engineer internship.",
   location: "Tangerang, Indonesia",
   status: "Open to AI / software engineering internships",
   email: "giovanniaugustw@gmail.com",
@@ -27,20 +21,20 @@ export const site = {
 } as const;
 
 export const about: string[] = [
-  "I'm a fifth-year computer science undergraduate at Bina Nusantara University. Most of my work so far has been hands-on machine learning: a real-time lane detection pipeline and a building energy forecasting model, both built end to end from data to deployed app.",
-  "Along the way I've picked up the unglamorous parts too: feature engineering, cross-validation that respects time order, Docker deployments, and enough FastAPI to put a model behind an API.",
-  "Right now I'm looking for an AI internship or a software engineering role where I can apply that to real problems.",
+  "I'm a fifth-semester computer science undergraduate at Bina Nusantara University. Most of my work so far has been practical machine learning: a real-time lane detection pipeline with a deployed app and a building energy forecasting model.",
+  "Along the way I've picked up the practical parts too: feature engineering, cross-validation that respects time order, Docker deployments, and serving models through FastAPI.",
+  "I'm looking for an AI/ML Engineering internship where I can help take models from notebook to production.",
 ];
 
 export const quickFacts: { label: string; value: string }[] = [
-  { label: "Now", value: "B.Sc. Computer Science, Bina Nusantara University" },
+  { label: "Now", value: "Computer Science, Bina Nusantara University" },
   { label: "Based in", value: site.location },
   { label: "Interested in", value: "AI internships, computer vision, machine learning" },
 ];
 
 export const education = {
   school: "Bina Nusantara University",
-  degree: "B.Sc. Computer Science",
+  degree: "Computer Science",
   period: "09/2024 – present",
   coursework: "GPA: 3.81",
 };
@@ -68,7 +62,6 @@ export const certificates = [
   },
 ];
 
-/** Grouped plain lists, following the resume's technical skills. */
 export const skills: { group: string; items: string[] }[] = [
   {
     group: "Languages",
@@ -88,18 +81,14 @@ export const skills: { group: string; items: string[] }[] = [
   },
 ];
 
-/* ------------------------------------------------------------------ */
-/* Education summaries (homepage cards)                                */
-/* ------------------------------------------------------------------ */
-
 export const study = {
   university: {
     badge: "BN",
     school: "Bina Nusantara University",
-    degree: "B.Sc. Computer Science",
+    degree: "Computer Science",
     period: "09/2024 – present",
     short:
-      "Fifth-year undergraduate with a 3.81 GPA, focused on AI and machine learning. Both projects on this site came out of that work: a lane detection pipeline and an energy forecasting model.",
+      "Fifth-semester undergraduate with a 3.81 GPA, focused on AI and machine learning. Created a lot of projects here such as a lane detection pipeline and an energy forecasting model.",
   },
 
   highSchool: {

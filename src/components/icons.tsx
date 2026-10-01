@@ -1,7 +1,4 @@
-/**
- * Brand marks are embedded as inline SVG on purpose: lucide-react v1 no longer
- * ships brand icons, and one extra dependency for two paths isn't worth it.
- */
+
 type IconProps = {
   size?: number | string;
   className?: string;

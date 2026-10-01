@@ -1,31 +1,13 @@
-/**
- * Project content lives here as data, not in JSX: adding a project is one
- * object, not a layout change.
- *
- * The two projects match the FlowCV resume. Both are featured and appear on
- * the homepage.
- */
 export type Project = {
   slug: string;
   title: string;
-  /** One or two sentences: what it does and the specific problem it solves. */
   description: string;
-  /** The interesting part. Recruiters read this line more than any other. */
   hard: string;
   stack: string[];
   year: string;
   githubUrl?: string;
   liveUrl?: string;
-  /**
-   * Optional preview in /public/projects/ — a real screenshot (PNG/JPG) or one
-   * of the generated SVG mock screens that ship with this site.
-   */
   image?: string;
-  /**
-   * Slideshow images for the project gallery popup, in /public/projects/.
-   * Add file paths here and a "photos" button appears on the card; leave it
-   * empty (or omit it) and the button stays hidden.
-   */
   gallery?: string[];
   featured?: boolean;
 };
@@ -36,12 +18,16 @@ export const projects: Project[] = [
     title: "PathFinder — Real-Time Lane Detection",
     description:
       "A computer vision pipeline that detects lane boundaries and calculates vehicle lane drift in real time, working across day and night lighting.",
-    hard: "Bird's-eye view inverse perspective mapping, sliding-window clustering, and 2nd-degree polynomial curve fitting (x = ay² + by + c), with a FastAPI backend deployed as a live web app on Hugging Face Spaces.",
+    hard: "Finding the correct ROI size, adjusting the correct equation to make the algorithm see the contrast in the lane for both day and night seperately, solving how to make the algorithm follow a curve lane properly and creating a drift alert.",
     stack: ["Python", "OpenCV", "FastAPI", "Docker"],
     year: "2026",
     image: "/projects/pathfinder/pathfinder.png",
     gallery: [
       "/projects/pathfinder/pathfinder.png",
+      "/projects/pathfinder/demo.png",
+      "/projects/pathfinder/curve.png",
+      "/projects/pathfinder/light.png",
+      "/projects/pathfinder/dark.png",
     ],
     liveUrl: "https://lane-detection-cv.vercel.app",
     featured: true,
@@ -51,7 +37,7 @@ export const projects: Project[] = [
     title: "Smart Building Energy Forecasting",
     description:
       "Forecasting 30-minute building power loads on the CU-BEMS dataset, benchmarking LSTM networks against XGBoost on multi-floor energy and air quality sensor data.",
-    hard: "Lag, rolling-window, and cyclical time features fed into chronological TimeSeriesSplit cross-validation. XGBoost won with R² 0.9818, SMAPE 6.95%, and a 68.1% RMSE reduction over baseline, confirmed by Diebold-Mariano testing.",
+    hard: "Fixing a huge missing sensor data from the dataset and Creating new useful features such as Lag, rolling-window, and cyclical time features to be fed to the models.",
     stack: ["Python", "scikit-learn", "TensorFlow", "XGBoost", "pandas"],
     year: "2026",
     image: "/projects/energy-forecast/building_load_1month.png",
@@ -61,6 +47,8 @@ export const projects: Project[] = [
       "/projects/energy-forecast/residual_analysis.png",
       "/projects/energy-forecast/cv_metrics_barchart.png",
       "/projects/energy-forecast/feature_importance.png",
+      "/projects/energy-forecast/iaq_overview.png",
+      "/projects/energy-forecast/final_metrics_barchart.png"
     ],
     featured: true,
   },

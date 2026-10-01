@@ -19,8 +19,6 @@ export default function GalleryModal({
   const [wasOpen, setWasOpen] = useState(open);
   const closeRef = useRef<HTMLButtonElement>(null);
 
-  // Reset to the first slide each time the gallery opens (render-time reset,
-  // the React-approved alternative to a setState-in-effect).
   if (open !== wasOpen) {
     setWasOpen(open);
     if (open) setIndex(0);
